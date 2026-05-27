@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    @apply antialiased text-gray-900 bg-gray-50 dark:bg-gray-900 dark:text-gray-100;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white transition-colors bg-primary-600 border border-transparent rounded-md shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed dark:focus:ring-offset-gray-900;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 transition-colors bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-offset-gray-900;
+  }
+
+  .input-field {
+    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 transition-colors duration-200;
+  }
+
+  .input-field:invalid:not(:placeholder-shown),
+  .input-field.has-error {
+    @apply border-red-500 focus:ring-red-500 focus:border-red-500 dark:border-red-500 dark:focus:ring-red-500 dark:focus:border-red-500;
+  }
+
+  .label-text {
+    @apply block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1;
+  }
+
+  .card {
+    @apply p-6 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 transition-all duration-200;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full dark:bg-gray-600;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-500;
+  }
+}
+
+/* Print Specific Styles */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  body {
+    background-color: white !important;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+
+  /* Hide header, form, scrollbars, background during print */
+  header, .card {
+    display: none !important;
+  }
+
+  /* Make sure the main layout removes gaps and paddings */
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+  
+  /* Reset the grid/flex layout to full page */
+  main > div {
+    display: block !important;
+  }
+
+  /* Force preview container to be absolute A4 without borders/shadows */
+  #invoice-preview-container {
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  .invoice-page {
+    box-shadow: none !important;
+    border: none !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    aspect-ratio: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    page-break-inside: avoid;
+    page-break-after: always;
+  }
+  
+  .invoice-page:last-child {
+    page-break-after: auto;
+  }
+  
+  /* Remove rounded corners and extra background containers for print */
+  .bg-gray-200, .dark\:bg-gray-800 {
+    background: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+}
+
+/* PDF Generation layout guarantees to prevent html2canvas breaking */
+.invoice-page table {
+  table-layout: fixed !important;
+  width: 100% !important;
+}
+
+.invoice-page td, .invoice-page th {
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+}
+
+.invoice-page {
+  overflow-x: hidden;
+}
