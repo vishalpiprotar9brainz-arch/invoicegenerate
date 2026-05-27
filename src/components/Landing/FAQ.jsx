@@ -2,15 +2,10 @@ import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function FAQ() {
-  const [openIndices, setOpenIndices] = useState(new Set([0]));
+  const [openIndex, setOpenIndex] = useState(0);
 
   const toggleFAQ = (index) => {
-    setOpenIndices(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(index)) newSet.delete(index);
-      else newSet.add(index);
-      return newSet;
-    });
+    setOpenIndex(prev => (prev === index ? null : index));
   };
 
   const faqs = [
@@ -69,7 +64,7 @@ export default function FAQ() {
           {/* Left Column */}
           <div className="space-y-4">
             {faqs.slice(0, 3).map((faq, index) => {
-              const isOpen = openIndices.has(index);
+              const isOpen = openIndex === index;
               return (
                 <div 
                   key={index} 
@@ -103,7 +98,7 @@ export default function FAQ() {
           <div className="space-y-4">
             {faqs.slice(3, 6).map((faq, idx) => {
               const index = idx + 3;
-              const isOpen = openIndices.has(index);
+              const isOpen = openIndex === index;
               return (
                 <div 
                   key={index} 
