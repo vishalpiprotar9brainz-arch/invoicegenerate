@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://invoicegenerator.com/</loc>
-    <lastmod>2026-05-27</lastmod>
+    <loc>https://invoicegenerate-puce.vercel.app/</loc>
+    <lastmod>2026-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://invoicegenerator.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://invoicegenerate-puce.vercel.app/" />
     <!-- Localization placeholders -->
-    <xhtml:link rel="alternate" hreflang="hi" href="https://invoicegenerator.com/hi" />
-    <xhtml:link rel="alternate" hreflang="gu" href="https://invoicegenerator.com/gu" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://invoicegenerate-puce.vercel.app/hi" />
+    <xhtml:link rel="alternate" hreflang="gu" href="https://invoicegenerate-puce.vercel.app/gu" />
   </url>
 </urlset>
